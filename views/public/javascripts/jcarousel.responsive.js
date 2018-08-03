@@ -3,16 +3,15 @@
         var jcarousel = $('.jcarousel');
 
         jcarousel
-            .on('jcarousel:reload jcarousel:create', function () {
-                var width = jcarousel.innerWidth();
+            .on('jcarousel:reload jcarousel:create', function (e, carous) {
+                var width = $(this).innerWidth();
 
-                if (width >= 600) {
-                    width = width / 3;
-                } else if (width >= 350) {
-                    width = width / 2;
-                }
+                var max_shown = $(this).attr('data-max-shown') || 3;
+                var available_slots = Math.floor(width / 200);
+                var items_shown = Math.max(1, Math.min(max_shown, available_slots));
+                width = Math.ceil(width / items_shown);
 
-                jcarousel.jcarousel('items').css('width', width + 'px');
+                $(this).jcarousel('items').css('width', width + 'px');
             })
             .jcarousel({
                 wrap: 'circular'

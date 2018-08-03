@@ -103,6 +103,9 @@ class ShortcodeCarouselPlugin extends Omeka_Plugin_AbstractPlugin
         if(isset($args['showtitles']) && $args['showtitles'] == 'true') {
             $configs['carousel']['showTitles'] = true;
         }
+        if (isset($args['max_shown'])) {
+            $configs['carousel']['max_shown'] = $args['max_shown'];
+        }
         //autoscroll configs
         if(isset($args['autoscroll']) && $args['autoscroll'] == 'true') {
             $configs['autoscroll'] = array();
