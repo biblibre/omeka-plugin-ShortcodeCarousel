@@ -1,5 +1,6 @@
 <div class="jcarousel-wrapper">
-    <div class="jcarousel" id="jcarousel-<?php echo $id_suffix; ?>">
+    <?php $max_shown_attr = (isset($configs['carousel']['max_shown'])) ? "data-max-shown=\"{$configs['carousel']['max_shown']}\"" : ""; ?>
+    <div class="jcarousel" id="jcarousel-<?php echo $id_suffix; ?>" <?php echo $max_shown_attr ?>>
         <ul>
         <?php foreach($items as $item): ?>
             <li>
